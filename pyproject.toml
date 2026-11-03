@@ -1,0 +1,12 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--import-mode=importlib"
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+extend-exclude = [".runtime", ".test-artifacts", ".agent-artifacts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
