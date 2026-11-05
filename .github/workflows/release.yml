@@ -1,0 +1,43 @@
+# Copy to .github/workflows/release.yml. Run from GitHub Actions or with:
+# gh workflow run release.yml [-f version=2.0.0] [-f dry-run=true]
+
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version; blank increments the last component"
+        required: false
+        default: ""
+        type: string
+      description:
+        description: "Release notes; blank generates them"
+        required: false
+        default: ""
+        type: string
+      dry-run:
+        description: "Validate without publishing"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release
+        uses: Vector35/plugin_actions@v1
+        with:
+          version: ${{ inputs.version }}
+          description: ${{ inputs.description }}
+          dry-run: ${{ inputs.dry-run }}
+          # Uncomment if your manifest is not at the repository root:
+          # plugin-json: src/plugin.json
