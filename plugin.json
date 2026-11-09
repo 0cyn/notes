@@ -25,7 +25,7 @@
     "Windows": "Install the Python modules listed in requirements.txt using Binary Ninja's Install Python3 Module action, then place bnnotes in the user plugins directory and restart Binary Ninja."
   },
   "dependencies": "tree-sitter>=0.25,<0.26\ntree-sitter-markdown>=0.5,<0.6\nPygments>=2.15,<3\nmarkdown-it-py>=4.1,<5",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "0cyn",
   "minimumbinaryninjaversion": 10905
 }
